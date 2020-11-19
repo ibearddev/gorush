@@ -3,38 +3,38 @@
 Микросервер отправки пуш уведомлений написанный на golang, веб фреймворк [Gin](https://github.com/gin-gonic/gin)
 Демо можно попробовать по ссылке [тут](https://github.com/appleboy/flutter-gorush).
 
-## Поддерживаемые латформы
+## Поддерживаемые платформы
 
 - [APNS](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
 - [FCM](https://firebase.google.com/)
 - [HMS](https://developer.huawei.com/consumer/en/hms/)
 
-[A live demo on Netlify](https://gorush.netlify.com/).
+[живое демо на Netlify](https://gorush.netlify.com/).
 
-## Фичи
+## Поддержка
 
-- Support [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) using [go-fcm](https://github.com/appleboy/go-fcm) library for Android.
-- Support [HTTP/2](https://http2.github.io/) Apple Push Notification Service using [apns2](https://github.com/sideshow/apns2) library.
-- Support [HMS Push Service](https://developer.huawei.com/consumer/en/hms/huawei-pushkit) using [go-hms-push](https://github.com/msalihkarakasli/go-hms-push) library for Huawei Devices.
-- Support [YAML](https://github.com/go-yaml/yaml) configuration.
-- Support command line to send single Android or iOS notification.
-- Support Web API to send push notification.
-- Support [HTTP/2](https://http2.github.io/) or HTTP/1.1 protocol.
-- Support notification queue and multiple workers.
-- Support `/api/stat/app` show notification success and failure counts.
-- Support `/api/config` show your [YAML](https://en.wikipedia.org/wiki/YAML) config.
-- Support store app stat to memory, [Redis](http://redis.io/), [BoltDB](https://github.com/boltdb/bolt), [BuntDB](https://github.com/tidwall/buntdb), [LevelDB](https://github.com/syndtr/goleveldb) or [BadgerDB](https://github.com/dgraph-io/badger).
-- Support `p8`, `p12` or `pem` format of iOS certificate file.
-- Support `/sys/stats` show response time, status code count, etc.
-- Support for HTTP, HTTPS or SOCKS5 proxy.
-- Support retry send notification if server response is fail.
-- Support expose [prometheus](https://prometheus.io/) metrics.
-- Support install TLS certificates from [Let's Encrypt](https://letsencrypt.org/) automatically.
-- Support send notification through [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) protocol, we use [gRPC](https://grpc.io/) as default framework.
-- Support running in Docker, [Kubernetes](https://kubernetes.io/) or [AWS Lambda](https://aws.amazon.com/lambda) ([Native Support in Golang](https://aws.amazon.com/blogs/compute/announcing-go-support-for-aws-lambda/))
-- Support graceful shutdown that workers and queue have been sent to APNs/FCM before shutdown service.
+- [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) с использованием [go-fcm](https://github.com/appleboy/go-fcm) либы для Android.
+- [HTTP/2](https://http2.github.io/) Apple Push Notification Service с использованием [apns2](https://github.com/sideshow/apns2) либы для iOS.
+- [HMS Push Service](https://developer.huawei.com/consumer/en/hms/huawei-pushkit) с использованием [go-hms-push](https://github.com/msalihkarakasli/go-hms-push) либы для Huawei.
+- [YAML](https://github.com/go-yaml/yaml) конфигурация.
+- команды для единичных отправок пушей на Android или iOS.
+- Web API для отправки пушей.
+- [HTTP/2](https://http2.github.io/) или HTTP/1.1 протокол.
+- очереди отправки и мультиворкеры.
+- `/api/stat/app` показать статистику отправки пушей (количество успех/ошибка).
+- `/api/config` показать конфиг [YAML](https://en.wikipedia.org/wiki/YAML).
+- хранения статистики отправки в памяти, [Redis](http://redis.io/), [BoltDB](https://github.com/boltdb/bolt), [BuntDB](https://github.com/tidwall/buntdb), [LevelDB](https://github.com/syndtr/goleveldb) or [BadgerDB](https://github.com/dgraph-io/badger).
+- `p8`, `p12` or `pem` расширений сертификатов iOS.
+- `/sys/stats` show response time, status code count, etc.
+- прокси HTTP, HTTPS или SOCKS5.
+- повторной отправки пуша, если ответ зафейлился.
+- экспорта метрик в [prometheus](https://prometheus.io/).
+- установки TLS сертификатов из [Let's Encrypt](https://letsencrypt.org/) автоматом.
+- отправку пушей по [RPC](https://en.wikipedia.org/wiki/Remote_procedure_call) протоколу, из коробки есть [gRPC](https://grpc.io/).
+- запуска в Docker, [Kubernetes](https://kubernetes.io/) или [AWS Lambda](https://aws.amazon.com/lambda) ([Лямда нативно поддерживает Golang](https://aws.amazon.com/blogs/compute/announcing-go-support-for-aws-lambda/))
+- мягкой остановки сервера: ждет лчистки всей очереди (APNs/FCM) и останавливается/перезагружается.
 
-See the default [YAML config example](config/testdata/config.yml):
+Конфиг [YAML пример](config/testdata/config.yml):
 
 [embedmd]:# (config/testdata/config.yml yaml)
 ```yaml
