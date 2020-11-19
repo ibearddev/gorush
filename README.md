@@ -1,70 +1,9 @@
 # gorush
 
-A push notification micro server using [Gin](https://github.com/gin-gonic/gin) framework written in Go (Golang) and see the [demo app](https://github.com/appleboy/flutter-gorush).
+Микросервер отправки пуш уведомлений написанный на golang, веб фреймворк [Gin](https://github.com/gin-gonic/gin)
+Демо можно попробовать по ссылке [тут](https://github.com/appleboy/flutter-gorush).
 
-[![GoDoc](https://godoc.org/github.com/appleboy/gorush?status.svg)](https://godoc.org/github.com/appleboy/gorush)
-[![Build Status](https://cloud.drone.io/api/badges/appleboy/gorush/status.svg)](https://cloud.drone.io/appleboy/gorush)
-[![Build status](https://ci.appveyor.com/api/projects/status/ka4hvplssp1q2s5u?svg=true)](https://ci.appveyor.com/project/appleboy/gorush-fp5dh)
-[![codecov](https://codecov.io/gh/appleboy/gorush/branch/master/graph/badge.svg)](https://codecov.io/gh/appleboy/gorush)
-[![Go Report Card](https://goreportcard.com/badge/github.com/appleboy/gorush)](https://goreportcard.com/report/github.com/appleboy/gorush)
-[![codebeat badge](https://codebeat.co/badges/0a4eff2d-c9ac-46ed-8fd7-b59942983390)](https://codebeat.co/projects/github-com-appleboy-gorush)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c82e0ed283474c5686d705ce64d004f7)](https://www.codacy.com/app/appleboy/gorush?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=appleboy/gorush&amp;utm_campaign=Badge_Grade)
-[![Docker Pulls](https://img.shields.io/docker/pulls/appleboy/gorush.svg)](https://hub.docker.com/r/appleboy/gorush/)
-[![microbadger](https://images.microbadger.com/badges/image/appleboy/gorush.svg)](https://microbadger.com/images/appleboy/gorush "Get your own image badge on microbadger.com")
-[![Release](https://github-release-version.herokuapp.com/github/appleboy/gorush/release.svg?style=flat)](https://github.com/appleboy/gorush/releases/latest)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8ab14c9f-44fd-4d9a-8bba-f73f76d253b1/deploy-status)](https://app.netlify.com/sites/gorush/deploys)
-[![Financial Contributors on Open Collective](https://opencollective.com/gorush/all/badge.svg?label=financial+contributors)](https://opencollective.com/gorush)
-
-## Contents
-
-- [gorush](#gorush)
-  - [Contents](#contents)
-  - [Support Platform](#support-platform)
-  - [Features](#features)
-  - [Memory Usage](#memory-usage)
-  - [Basic Usage](#basic-usage)
-    - [Download a binary](#download-a-binary)
-    - [Install from source](#install-from-source)
-      - [Prerequisite Tools](#prerequisite-tools)
-      - [Fetch from GitHub](#fetch-from-github)
-    - [Command Usage](#command-usage)
-    - [Send Android notification](#send-android-notification)
-    - [Send Huawei (HMS) notification](#send-huawei-hms-notification)
-    - [Send iOS notification](#send-ios-notification)
-    - [Send Android or iOS notifications using Firebase](#send-android-or-ios-notifications-using-firebase)
-  - [Run gorush web server](#run-gorush-web-server)
-  - [Web API](#web-api)
-    - [GET /api/stat/go](#get-apistatgo)
-    - [GET /api/stat/app](#get-apistatapp)
-    - [GET /sys/stats](#get-sysstats)
-    - [GET /metrics](#get-metrics)
-    - [POST /api/push](#post-apipush)
-    - [Request body](#request-body)
-    - [iOS alert payload](#ios-alert-payload)
-    - [iOS sound payload](#ios-sound-payload)
-    - [Android notification payload](#android-notification-payload)
-    - [Huawei notification](#huawei-notification)
-    - [iOS Example](#ios-example)
-    - [Android Example](#android-example)
-    - [Huawei Example](#huawei-example)
-    - [Response body](#response-body)
-  - [Run gRPC service](#run-grpc-service)
-  - [Run gorush in Docker](#run-gorush-in-docker)
-  - [Run gorush in Kubernetes](#run-gorush-in-kubernetes)
-    - [Quick Start](#quick-start)
-    - [Create the Service Controller for AWS ELB](#create-the-service-controller-for-aws-elb)
-    - [Ingress Controller for AWS ALB](#ingress-controller-for-aws-alb)
-    - [Clean up the gorush:](#clean-up-the-gorush)
-  - [Run gorush in AWS Lambda](#run-gorush-in-aws-lambda)
-    - [Build gorush binary](#build-gorush-binary)
-    - [Deploy gorush application](#deploy-gorush-application)
-    - [Without an AWS account](#without-an-aws-account)
-  - [Stargazers over time](#stargazers-over-time)
-  - [License](#license)
-
-<a href="https://www.buymeacoffee.com/appleboy" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-
-## Support Platform
+## Поддерживаемые латформы
 
 - [APNS](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html)
 - [FCM](https://firebase.google.com/)
@@ -72,7 +11,7 @@ A push notification micro server using [Gin](https://github.com/gin-gonic/gin) f
 
 [A live demo on Netlify](https://gorush.netlify.com/).
 
-## Features
+## Фичи
 
 - Support [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) using [go-fcm](https://github.com/appleboy/go-fcm) library for Android.
 - Support [HTTP/2](https://http2.github.io/) Apple Push Notification Service using [apns2](https://github.com/sideshow/apns2) library.
@@ -187,9 +126,9 @@ stat:
     path: "badger.db"
 ```
 
-## Memory Usage
+## Память
 
-Memory average usage: **28Mb** (the total bytes of memory obtained from the OS.)
+Используется памяти: **28Mb** (the total bytes of memory obtained from the OS.)
 
 ![memory usage](screenshot/memory.png)
 
@@ -199,11 +138,11 @@ Test Command (We use [bat](https://github.com/astaxie/bat) as default cli tool.)
 for i in {1..9999999}; do bat -b.N=1000 -b.C=100 POST localhost:8088/api/push notifications:=@notification.json; sleep 1;  done
 ```
 
-## Basic Usage
+## С чего начать?
 
-How to send push notification using `gorush` command? (Android or iOS)
+Как отправить пуш используя `gorush`? (на Android или iOS)
 
-### Download a binary
+### Скачать бинарь
 
 The pre-compiled binaries can be downloaded from [release page](https://github.com/appleboy/gorush/releases).
 
@@ -213,40 +152,40 @@ With `Go` installed
 go get -u -v github.com/appleboy/gorush
 ```
 
-On linux
+На linux
 
 ```sh
 wget https://github.com/appleboy/gorush/releases/download/v1.13.0/gorush-v1.13.0-linux-amd64 -O gorush
 ```
 
-On OS X
+На OS X
 
 ```sh
 wget https://github.com/appleboy/gorush/releases/download/v1.13.0/gorush-v1.13.0-darwin-amd64 -O gorush
 ```
 
-On Windows
+На Windows
 
 ```sh
 wget https://github.com/appleboy/gorush/releases/download/v1.13.0/gorush-v1.13.0-windows-amd64.exe -O gorush.exe
 ```
 
-On macOS, use Homebrew.
+На macOS, используя Homebrew.
 
 ```sh
 brew install --HEAD https://github.com/appleboy/gorush/raw/master/HomebrewFormula/gorush.rb
 ```
 
-### Install from source
+### Установка из исходников
 
-#### Prerequisite Tools
+#### Зависимости
 
 - [Git](http://git-scm.com/)
 - [Go (at least Go 1.11)](https://golang.org/dl/)
 
-#### Fetch from GitHub
+#### Получить с GitHub
 
-Gorush uses the Go Modules support built into Go 1.11 to build. The easiest way to get started is to clone Gorush in a directory outside of the GOPATH, as in the following example:
+Gorush использует для сборки поддержку модулей Go, встроенную в Go 1.11. Самый простой способ начать - клонировать Gorush в каталог за пределами GOPATH, как в следующем примере:
 
 ```sh
 mkdir $HOME/src
@@ -256,7 +195,7 @@ cd gorush
 go install
 ```
 
-### Command Usage
+### Команды
 
 ```sh
   ________                              .__
@@ -297,7 +236,7 @@ Common Options:
     -v, --version                    Show version
 ```
 
-### Send Android notification
+### Отправить пуш на Android
 
 Send single notification with the following command.
 
@@ -320,7 +259,7 @@ gorush --android --topic "/topics/foo-bar" \
 - `--topic`: Send messages to topics. note: don't add device token.
 - `--proxy`: Set `http`, `https` or `socks5` proxy url.
 
-### Send Huawei (HMS) notification
+### Отправить пуш на Huawei (HMS)
 
 Send single notification with the following command.
 
@@ -345,7 +284,7 @@ gorush --huawei --topic "foo-bar" \
 - `--topic`: Send messages to topics. note: don't add device token.
 - `--proxy`: Set `http`, `https` or `socks5` proxy url.
 
-### Send iOS notification
+### Отправить пуш на iOS
 
 Send single notification with the following command.
 
@@ -369,7 +308,7 @@ $ gorush -ios -m "your message" -i "your certificate path" \
   -production
 ```
 
-### Send Android or iOS notifications using Firebase
+### Отправить пуш на Android или iOS используя Firebase
 
 Send single notification with the following command:
 
@@ -377,7 +316,7 @@ Send single notification with the following command:
 gorush -android -m "your message" -k "API key" -t "Device token"
 ```
 
-## Run gorush web server
+## Запуск gorush веб-сервера
 
 Please make sure your [config.yml](config/testdata/config.yml) exist. Default port is `8088`.
 
@@ -998,7 +937,7 @@ See the following error format.
 }
 ```
 
-## Run gRPC service
+## Запуск как gRPC service
 
 Gorush support [gRPC](https://grpc.io/) service. You can enable the gRPC in `config.yml`, default as disabled. Enable the gRPC server:
 
@@ -1171,7 +1110,7 @@ func main() {
 }
 ```
 
-## Run gorush in Docker
+## Запуск gorush в Docker
 
 Set up `gorush` in the cloud in under 5 minutes with zero knowledge of Golang or Linux shell using our [gorush Docker image](https://hub.docker.com/r/appleboy/gorush/).
 
@@ -1195,9 +1134,9 @@ http -v --verify=no --json GET http://your.docker.host/api/stat/go
 
 ![statue screenshot](screenshot/status.png)
 
-## Run gorush in Kubernetes
+## Запуск gorush в Kubernetes
 
-### Quick Start
+### Быстрый старт
 
 Create namespace as `gorush` as `gorush` and then your configuration map:
 
@@ -1249,13 +1188,13 @@ kubectl create -f k8s/gorush-aws-alb-ingress.yaml
 kubectl delete -f k8s
 ```
 
-## Run gorush in AWS Lambda
+## Запуск gorush на AWS Lambda
 
 ![lambda](./screenshot/lambda.png)
 
 AWS excited to [announce Go as a supported language for AWS Lambda](https://aws.amazon.com/blogs/compute/announcing-go-support-for-aws-lambda/). You’re going to create an application that uses an [API Gateway](https://aws.amazon.com/apigateway) event source to create a simple Hello World RESTful API.
 
-### Build gorush binary
+### Собрать бинарник gorush
 
 Download source code first.
 
@@ -1266,7 +1205,7 @@ cd gorush && make build_linux_lambda
 
 you can see the binary file in `release/linux/lambda/` folder
 
-### Deploy gorush application
+### Деплой gorush
 
 we need to build a binary that will run on Linux, and ZIP it up into a deployment package.
 
@@ -1303,12 +1242,9 @@ Or you can deploy gorush to alternative solution like [netlify functions](https:
   status = 200
 ```
 
-## Stargazers over time
 
-[![Stargazers over time](https://starcharts.herokuapp.com/appleboy/gorush.svg)](https://starcharts.herokuapp.com/appleboy/gorush)
-
-## License
+## Лицензия
 
 Copyright 2019 Bo-Yi Wu [@appleboy](https://twitter.com/appleboy).
 
-Licensed under the MIT License.
+Licensed under the MIT License. (есть МИТ слава ИТ-богам)
