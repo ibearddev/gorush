@@ -39,16 +39,16 @@
 [embedmd]:# (config/testdata/config.yml yaml)
 ```yaml
 core:
-  enabled: true # enable httpd server
-  address: "" # ip address to bind (default: any)
-  shutdown_timeout: 30 # default is 30 second
-  port: "8088" # ignore this port number if auto_tls is enabled (listen 443).
-  worker_num: 0 # default worker number is runtime.NumCPU()
-  queue_num: 0 # default queue number is 8192
+  enabled: true # включить httpd сервер
+  address: "" # IP-адрес для привязки (по умолчанию: любой)
+  shutdown_timeout: 30 # по умолчанию 30 секунд
+  port: "8088" # игнорировать этот номер порта, если включен auto_tls (listen 443).
+  worker_num: 0 # номер воркера по умолчанию - runtime.NumCPU ()
+  queue_num: 0 # номер очереди по умолчанию 8192
   max_notification: 100
-  sync: false # set true if you need get error message from fail push notification in API response.
-  feedback_hook_url: "" # set a hook url if you need get error message asynchronously from fail push notification in API response.
-  feedback_timeout: 10 # default is 10 second
+  sync: false # установите true, если вам нужно получить сообщение об ошибке из push-уведомления о сбое в ответе API.
+  feedback_hook_url: "" # установите URL-адрес для фидбека, если вам нужно асинхронно получать сообщение об ошибке из push-уведомления о сбое в ответе API.
+  feedback_timeout: 10 # по умолчанию 10 сек
   mode: "release"
   ssl: false
   cert_path: "cert.pem"
@@ -61,12 +61,12 @@ core:
     path: "gorush.pid"
     override: true
   auto_tls:
-    enabled: false # Automatically install TLS certificates from Let's Encrypt.
-    folder: ".cache" # folder for storing TLS certificates
-    host: "" # which domains the Let's Encrypt will attempt
+    enabled: false # автоматически устанавливать сертификаты TLS из Let's Encrypt.
+    folder: ".cache" # папка для хранения сертификатов TLS
+    host: "" # какие домены будут с Let's Encrypt
 
 grpc:
-  enabled: false # enable gRPC server
+  enabled: false # вкл gRPC сервер
   port: 9000
 
 api:
@@ -81,36 +81,36 @@ api:
 android:
   enabled: true
   apikey: "YOUR_API_KEY"
-  max_retry: 0 # resend fail notification, default value zero is disabled
+  max_retry: 0 # максимальное количество повторных отправок уведомления об ошибке, значение по умолчанию ноль - отключено
 
 huawei:
   enabled: true
   apikey: "YOUR_API_KEY"
   appid: "YOUR_APP_ID"
-  max_retry: 0 # resend fail notification, default value zero is disabled
+  max_retry: 0 # максимальное количество повторных отправок уведомления об ошибке, значение по умолчанию ноль - отключено
 
 ios:
   enabled: false
   key_path: "key.pem"
-  key_base64: "" # load iOS key from base64 input
-  key_type: "pem" # could be pem, p12 or p8 type
-  password: "" # certificate password, default as empty string.
+  key_base64: "" # загрузить ключ iOS из ввода base64
+  key_type: "pem" # может иметь тип pem, p12 или p8
+  password: "" # пароль сертификата, по умолчанию - пустая строка.
   production: false
-  max_concurrent_pushes: 100 # just for push ios notification
-  max_retry: 0 # resend fail notification, default value zero is disabled
-  key_id: "" # KeyID from developer account (Certificates, Identifiers & Profiles -> Keys)
-  team_id: "" # TeamID from developer account (View Account -> Membership)
+  max_concurrent_push: 100 # только для push-уведомлений ios
+  max_retry: 0 # максимальное количество повторных отправок уведомления об ошибке, значение по умолчанию ноль - отключено
+  key_id: "" # KeyID из учетной записи разработчика (Certificates, Identifiers & Profiles -> Keys)
+  team_id: "" # TeamID из учетной записи разработчика (View Account -> Membership)
 
 log:
   format: "string" # string or json
-  access_log: "stdout" # stdout: output to console, or define log path like "log/access_log"
+  access_log: "stdout" # stdout: вывод на консоль или определение пути к журналу, например "log/access_log"
   access_level: "debug"
-  error_log: "stderr" # stderr: output to console, or define log path like "log/error_log"
+  error_log: "stderr" # stderr: вывод на консоль или определение пути к журналу, например "log/error_log"
   error_level: "error"
   hide_token: true
 
 stat:
-  engine: "memory" # support memory, redis, boltdb, buntdb or leveldb
+  engine: "memory" # поддержка памяти, redis, boltdb, buntdb или leveldb
   redis:
     addr: "localhost:6379"
     password: ""
